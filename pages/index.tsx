@@ -95,7 +95,7 @@ const Home: NextPage = () => {
               className="mb-5 sm:mb-0"
             />
             <p className="text-left font-medium">
-              复制你的微信聊天内容{" "}
+              粘贴你的聊天内容{" "}
               <span className="text-blue-200 hover:text-blue-400">
                 <a
                   href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
@@ -108,10 +108,10 @@ const Home: NextPage = () => {
           <textarea
             value={chat}
             onChange={(e) => setChat(e.target.value)}
-            rows={8}
+            rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
             placeholder={
-              "Bang-Bo 2023/01/31 5:42 PM\n咨询一下，前端开发应该怎么学？\n\nGod 2023/01/31 5:42 PM\n去解决实际问题，哪里不会学哪里\n\nBang-Bo 2023/01/31 5:43 PM\n你说的对！"
+              "多选聊天内容，复制。通常包含昵称、时间和内容。"
             }
           />
           <div className="flex mb-5 items-center space-x-3">
