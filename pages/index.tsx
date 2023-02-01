@@ -97,9 +97,13 @@ const Home: NextPage = () => {
             <p className="text-left font-medium">
               复制你的微信聊天内容{" "}
               <span className="text-slate-500">
-                (点击这里查看教程)
+                <a
+                  href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >(点击这里查看教程)</a>
               </span>
-              .
+              。
             </p>
           </div>
           <textarea
