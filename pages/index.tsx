@@ -96,14 +96,13 @@ const Home: NextPage = () => {
             />
             <p className="text-left font-medium">
               复制你的微信聊天内容{" "}
-              <span className="text-slate-500">
+              <span className="text-blue-200 hover:text-blue-400">
                 <a
                   href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
                   target="_blank"
                   rel="noopener noreferrer"
                 >(点击这里查看教程)</a>
               </span>
-              。
             </p>
           </div>
           <textarea
@@ -139,6 +138,17 @@ const Home: NextPage = () => {
               <LoadingDots color="white" style="large" />
             </button>
           )}
+          <div className="mt-1 items-center space-x-3">
+            <span className="text-slate-200">
+              本网站不存储您上传的数据，详情请查看
+              <a
+                className="text-blue-200 hover:text-blue-400"
+                href="https://github.com/zhengbangbo/chat-simplifier/wiki/Privacy-Policy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >《隐私声明》</a>
+            </span>
+          </div>
         </div>
         <Toaster
           position="top-center"
