@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       `用一段话详略得当总结这段聊天内容：\n${chat}`
       : `用无序列表详略得当总结这段聊天内容：\n${chat}`;
 
-  const generateBio = async (e: any) => {
+  const generateChat = async (e: any) => {
     e.preventDefault();
     setGeneratedChat("");
     setLoading(true);
@@ -125,7 +125,7 @@ const Home: NextPage = () => {
           {!loading && (
             <button
               className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
-              onClick={(e) => generateBio(e)}
+              onClick={(e) => generateChat(e)}
             >
               简化聊天内容 &rarr;
             </button>
