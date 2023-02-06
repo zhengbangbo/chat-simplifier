@@ -56,7 +56,7 @@ const Home: NextPage = () => {
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
-      const chunkValue = decoder.decode(value);
+      const chunkValue = decoder.decode(value).replace("<|im_end|>", "");
       setGeneratedChat((prev) => prev + chunkValue);
     }
 
