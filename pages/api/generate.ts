@@ -18,7 +18,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   const payload: OpenAIStreamPayload = {
-    model: "text-davinci-003",
+    model: "text-chat-davinci-002-20221122",
     prompt,
     temperature: 0.7,
     top_p: 1,
