@@ -72,27 +72,15 @@ const Home: NextPage = () => {
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
-        <div className="flex flex-wrap justify-center space-x-2">
-          <a
-            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
-            href="https://github.com/zhengbangbo/chat-simplifier"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Github />
-            <p>GitHub</p>
-          </a>
-          <a
-            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
-            href="https://imzbb.cc/img/sponsorship.png"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#888888" d="M12.001 4.529a5.998 5.998 0 0 1 8.242.228a6 6 0 0 1 .236 8.236l-8.48 8.492l-8.478-8.492a6 6 0 0 1 8.48-8.464zm6.826 1.641a3.998 3.998 0 0 0-5.49-.153l-1.335 1.198l-1.336-1.197a3.999 3.999 0 0 0-5.494.154a4 4 0 0 0-.192 5.451L12 18.654l7.02-7.03a4 4 0 0 0-.193-5.454z"/></svg>
-            <p>赞助</p>
-          </a>
-        </div>
-
+        <a
+          className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
+          href="https://github.com/zhengbangbo/chat-simplifier"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github />
+          <p>Star on GitHub</p>
+        </a>
         <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
           聊天内容简化器
         </h1>
