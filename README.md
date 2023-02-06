@@ -22,3 +22,9 @@ npm run dev
 ## Credits
 
 Inspired by [TwtterBio](https://github.com/Nutlope/twitterbio) and [Jimmy Lv](https://www.bilibili.com/video/BV17M411i7B6).
+
+## 赞助
+
+调用 OpenAI 接口有一定的成本。如果您经济宽裕，可以考虑给我赞助，以使本工具能够长期运营。
+
+![](https://imzbb.cc/img/sponsorship.png)
