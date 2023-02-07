@@ -1,0 +1,19 @@
+{
+  "Index": {
+    "title": "聊天内容简化器",
+    "description": "简化您的聊天内容",
+    "slogan": "群消息太多？太长不看！",
+    "step1": "粘贴你的聊天内容",
+    "helpPageLink": "(点击这里查看教程)",
+    "placeholder": "多选聊天内容，复制。通常包含昵称、时间和内容。",
+    "step2": "选择输出结果的形式。",
+    "simplifierButton": "简化聊天内容",
+    "simplifiedContent": "简化后的内容",
+    "privacyPolicy1": "不建议上传过于隐私的聊天内容，详情查看",
+    "privacyPolicy2": "《隐私声明》",
+    "paragraphForm": "段落",
+    "paragraphFormPrompt": "用一段话详细总结下面的对话：",
+    "outlineForm": "大纲",
+    "outlineFormPrompt": "以提纲的形式详细总结以下聊天内容："
+  }
+}

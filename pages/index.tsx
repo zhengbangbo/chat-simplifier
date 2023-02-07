@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { FormType } from "../components/DropDown";
 import Footer from "../components/Footer";
@@ -12,17 +13,19 @@ import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 
 const Home: NextPage = () => {
+  const t = useTranslations('Index')
+
   const [loading, setLoading] = useState(false);
   const [chat, setChat] = useState("");
-  const [form, setForm] = useState<FormType>("段落");
+  const [form, setForm] = useState<FormType>("paragraphForm");
   const [generatedChat, setGeneratedChat] = useState<String>("");
 
   console.log("Streamed response: ", generatedChat);
 
   const prompt =
-    form === '段落'?
-      `用一段话详略得当总结这段聊天内容：\n${chat}`
-      : `用无序列表详略得当总结这段聊天内容：\n${chat}`;
+    form === 'paragraphForm'?
+      `${t('paragraphFormPrompt')}\n\n${chat}`
+      : `${t('outlineFormPrompt')}\n\n${chat}`;
 
   const generateChat = async (e: any) => {
     e.preventDefault();
@@ -66,7 +69,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Chat Simplifier</title>
+        <title>{t('title')}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -82,9 +85,9 @@ const Home: NextPage = () => {
           <p>Star on GitHub</p>
         </a>
         <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
-          聊天内容简化器
+          {t('description')}
         </h1>
-        <p className="text-slate-500 mt-5">群消息太多？太长不看！</p>
+        <p className="text-slate-500 mt-5">{t('slogan')}</p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
             <Image
@@ -95,13 +98,13 @@ const Home: NextPage = () => {
               className="mb-5 sm:mb-0"
             />
             <p className="text-left font-medium">
-              粘贴你的聊天内容{" "}
+              {t('step1')}{" "}
               <span className="text-blue-200 hover:text-blue-400">
                 <a
                   href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
                   target="_blank"
                   rel="noopener noreferrer"
-                >(点击这里查看教程)</a>
+                >{t('helpPageLink')}</a>
               </span>
             </p>
           </div>
@@ -111,12 +114,12 @@ const Home: NextPage = () => {
             rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
             placeholder={
-              "多选聊天内容，复制。通常包含昵称、时间和内容。"
+              t('placeholder')
             }
           />
           <div className="flex mb-5 items-center space-x-3">
             <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
-            <p className="text-left font-medium">选择输出结果的形式。</p>
+            <p className="text-left font-medium">{t('step2')}</p>
           </div>
           <div className="block">
             <DropDown form={form} setForm={(newForm) => setForm(newForm)} />
@@ -127,7 +130,7 @@ const Home: NextPage = () => {
               className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               onClick={(e) => generateChat(e)}
             >
-              简化聊天内容 &rarr;
+              {t('simplifierButton')} &rarr;
             </button>
           )}
           {loading && (
@@ -140,13 +143,13 @@ const Home: NextPage = () => {
           )}
           <div className="mt-1 items-center space-x-3">
             <span className="text-slate-200">
-              不建议上传过于隐私的聊天内容，详情查看
+                {t('privacyPolicy1')}
               <a
                 className="text-blue-200 hover:text-blue-400"
                 href="https://github.com/zhengbangbo/chat-simplifier/wiki/Privacy-Policy"
                 target="_blank"
                 rel="noopener noreferrer"
-              >《隐私声明》</a>
+              >{' '}{t('privacyPolicy2')}</a>
             </span>
           </div>
         </div>
@@ -163,7 +166,7 @@ const Home: NextPage = () => {
                 <>
                   <div>
                     <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
-                      简化后的内容
+                      {t('simplifiedContent')}
                     </h2>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
@@ -191,3 +194,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: {
+        ...require(`../messages/${locale}.json`),
+      },
+    },
+  }
+}

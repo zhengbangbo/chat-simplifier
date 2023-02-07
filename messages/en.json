@@ -1,0 +1,19 @@
+{
+  "Index": {
+    "title": "Chat Simplifier",
+    "description": "Simplify your chat content in seconds",
+    "slogan": "Too many group messages? It's too long to look!",
+    "step1": "Paste your chat content",
+    "helpPageLink": "(Click here to view tutorials)",
+    "placeholder": "Choose more chat content and copy it. It usually contains nicknames, times, and content.",
+    "step2": "Select the form of the output.",
+    "simplifierButton": "Simplify the chat content",
+    "privacyPolicy1": "It is not recommended to upload chat that is too private. For more information, please see",
+    "privacyPolicy2": "Privacy Statement",
+    "simplifiedContent": "Simplified content",
+    "paragraphForm": "Paragraph",
+    "paragraphFormPrompt": "Use a paragraph to summarize the following conversation in detail:",
+    "outlineForm": "Outline",
+    "outlineFormPrompt": "Summarize the following chat in detail in the form of an outline:"
+  }
+}
