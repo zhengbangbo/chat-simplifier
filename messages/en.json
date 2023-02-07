@@ -1,6 +1,7 @@
 {
   "Index": {
     "title": "Chat Simplifier",
+    "switchLocale": "{locale, select,zh {中文} en {English} other {}}",
     "description": "Simplify your chat content in seconds",
     "slogan": "Too many group messages? It's too long to look!",
     "step1": "Paste your chat content",

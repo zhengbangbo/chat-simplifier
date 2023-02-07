@@ -1,6 +1,7 @@
 {
   "Index": {
     "title": "聊天内容简化器",
+    "switchLocale": "{locale, select,zh {中文} en {English} other {}}",
     "description": "简化您的聊天内容",
     "slogan": "群消息太多？太长不看！",
     "step1": "粘贴你的聊天内容",

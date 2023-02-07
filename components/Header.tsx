@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 import { useTranslations } from "next-intl";
 
 export default function Header() {
   const t = useTranslations('Index')
+  const { locale, locales, route } = useRouter()
+  const otherLocale = locales?.find((cur) => cur !== locale)
 
   return (
     <header className="flex justify-between items-center w-full mt-5 border-b-2 pb-7 sm:px-4 px-2">
@@ -19,6 +22,14 @@ export default function Header() {
           {t('title')}
         </h1>
       </Link>
+      {
+        otherLocale && (
+          <Link href={route} locale={otherLocale}
+            className="relative font-medium text-black-600 before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-indigo-600 before:transition hover:before:scale-x-100">
+            {t('switchLocale', { locale: otherLocale })}
+          </Link>
+        )
+      }
       <a
         href="https://vercel.com/"
         target="_blank"
