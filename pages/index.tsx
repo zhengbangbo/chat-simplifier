@@ -117,7 +117,7 @@ const Home: NextPage = () => {
                       href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
                       target="_blank"
                       rel="noopener noreferrer"
-                    >{t('step0Help')}</a>
+                    >{t('helpPageLink')}</a>
                   </span>
                 </p>
               </div>
@@ -142,13 +142,18 @@ const Home: NextPage = () => {
             />
             <p className="text-left font-medium">
               {t('step1')}{" "}
-              <span className="text-blue-200 hover:text-blue-400">
-                <a
-                  href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >{t('helpPageLink')}</a>
-              </span>
+              {
+                !useUserKey && (
+                  <span className="text-blue-200 hover:text-blue-400">
+                    <a
+                      href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >{t('helpPageLink')}</a>
+                  </span>
+                )
+              }
+
             </p>
           </div>
           <textarea
