@@ -195,7 +195,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
-export function getStaticProps({ locale }) {
+export function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       messages: {
