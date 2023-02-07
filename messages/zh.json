@@ -12,8 +12,8 @@
     "privacyPolicy1": "不建议上传过于隐私的聊天内容，详情查看",
     "privacyPolicy2": "《隐私声明》",
     "paragraphForm": "段落",
-    "paragraphFormPrompt": "用一段话详细总结下面的对话：",
+    "paragraphFormPrompt": "请总结<|start|>与<|end|>之间的聊天内容。要求简明扼要，以一段话的形式输出。\n\n<|start|>",
     "outlineForm": "大纲",
-    "outlineFormPrompt": "以提纲的形式详细总结以下聊天内容："
+    "outlineFormPrompt": "请总结<|start|>与<|end|>之间的聊天内容。要求简明扼要，以包含列表的大纲形式输出。\n\n<|start|>"
   }
 }

@@ -24,8 +24,8 @@ const Home: NextPage = () => {
 
   const prompt =
     form === 'paragraphForm'?
-      `${t('paragraphFormPrompt')}\n\n${chat}`
-      : `${t('outlineFormPrompt')}\n\n${chat}`;
+      `${t('paragraphFormPrompt')}${chat}<|end|>`
+      : `${t('outlineFormPrompt')}${chat}<|end|>`;
 
   const generateChat = async (e: any) => {
     e.preventDefault();
