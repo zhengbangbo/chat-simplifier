@@ -1,24 +1,33 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error("Missing env var from OpenAI");
+if (process.env.USE_USER_KEY !== "true") {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("Missing env var from OpenAI");
+  }
 }
+
+
 
 export const config = {
   runtime: "edge",
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt } = (await req.json()) as {
+  const { prompt, api_key } = (await req.json()) as {
     prompt?: string;
+    api_key?: string
   };
 
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
   }
 
+  if (!process.env.OPENAI_MODEL) {
+    throw new Error("Missing env var from OpenAI")
+  }
+
   const payload: OpenAIStreamPayload = {
-    model: "text-chat-davinci-002-20221122",
+    model: process.env.OPENAI_MODEL,
     prompt,
     temperature: 0.7,
     top_p: 1,
@@ -27,7 +36,8 @@ const handler = async (req: Request): Promise<Response> => {
     max_tokens: 800,
     stream: true,
     n: 1,
-  };
+    api_key,
+  }
 
   const stream = await OpenAIStream(payload);
   return new Response(stream);
