@@ -4,6 +4,8 @@
     "switchLocale": "{locale, select,zh {中文} en {English} other {}}",
     "description": "Simplify your chat content in seconds",
     "slogan": "Too many group messages? It's too long to look!",
+    "step0": "Paste your OpenAI API Key",
+    "openaiApiKeyPlaceholder": "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "step1": "Paste your chat content",
     "helpPageLink": "(Click here to view tutorials)",
     "placeholder": "Choose more chat content and copy it. It usually contains nicknames, times, and content.",

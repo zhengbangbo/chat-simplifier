@@ -4,6 +4,8 @@
     "switchLocale": "{locale, select,zh {中文} en {English} other {}}",
     "description": "简化您的聊天内容",
     "slogan": "群消息太多？太长不看！",
+    "step0": "粘贴你的 OpenAI API Key",
+    "openaiApiKeyPlaceholder": "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     "step1": "粘贴你的聊天内容",
     "helpPageLink": "(点击这里查看教程)",
     "placeholder": "多选聊天内容，复制。通常包含昵称、时间和内容。",

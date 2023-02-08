@@ -18,6 +18,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [chat, setChat] = useState("");
   const [form, setForm] = useState<FormType>("paragraphForm");
+  const [api_key, setAPIKey] = useState("")
   const [generatedChat, setGeneratedChat] = useState<String>("");
 
   console.log("Streamed response: ", generatedChat);
@@ -27,19 +28,35 @@ const Home: NextPage = () => {
       `${t('paragraphFormPrompt')}${chat}<|end|>`
       : `${t('outlineFormPrompt')}${chat}<|end|>`;
 
+  const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
+
   const generateChat = async (e: any) => {
     e.preventDefault();
     setGeneratedChat("");
     setLoading(true);
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt,
-      }),
-    });
+
+    const response = useUserKey ?
+      await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+          api_key,
+        }),
+      })
+    :
+      await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+        }),
+      })
+
     console.log("Edge function returned.");
 
     if (!response.ok) {
@@ -89,6 +106,32 @@ const Home: NextPage = () => {
         </h1>
         <p className="text-slate-500 mt-5">{t('slogan')}</p>
         <div className="max-w-xl w-full">
+          { useUserKey &&(
+            <>
+              <div className="flex mt-10 items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#000" d="M7 14q-.825 0-1.412-.588Q5 12.825 5 12t.588-1.413Q6.175 10 7 10t1.412.587Q9 11.175 9 12q0 .825-.588 1.412Q7.825 14 7 14Zm0 4q-2.5 0-4.25-1.75T1 12q0-2.5 1.75-4.25T7 6q1.675 0 3.038.825Q11.4 7.65 12.2 9H21l3 3l-4.5 4.5l-2-1.5l-2 1.5l-2.125-1.5H12.2q-.8 1.35-2.162 2.175Q8.675 18 7 18Zm0-2q1.4 0 2.463-.85q1.062-.85 1.412-2.15H14l1.45 1.025L17.5 12.5l1.775 1.375L21.15 12l-1-1h-9.275q-.35-1.3-1.412-2.15Q8.4 8 7 8Q5.35 8 4.175 9.175Q3 10.35 3 12q0 1.65 1.175 2.825Q5.35 16 7 16Z"/></svg>
+                <p className="text-left font-medium">
+                  {t('step0')}{" "}
+                  <span className="text-blue-200 hover:text-blue-400">
+                    <a
+                      href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >{t('helpPageLink')}</a>
+                  </span>
+                </p>
+              </div>
+              <input
+                  value={api_key}
+                  onChange={(e) => setAPIKey(e.target.value)}
+                  className="w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-black focus:ring-black p-2"
+                  placeholder={
+                    t('openaiApiKeyPlaceholder')
+                  }
+                />
+            </>)
+          }
+
           <div className="flex mt-10 items-center space-x-3">
             <Image
               src="/1-black.png"
@@ -99,13 +142,18 @@ const Home: NextPage = () => {
             />
             <p className="text-left font-medium">
               {t('step1')}{" "}
-              <span className="text-blue-200 hover:text-blue-400">
-                <a
-                  href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >{t('helpPageLink')}</a>
-              </span>
+              {
+                !useUserKey && (
+                  <span className="text-blue-200 hover:text-blue-400">
+                    <a
+                      href="https://github.com/zhengbangbo/chat-simplifier/wiki/Help"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >{t('helpPageLink')}</a>
+                  </span>
+                )
+              }
+
             </p>
           </div>
           <textarea
