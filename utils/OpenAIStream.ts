@@ -25,7 +25,17 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
 
-  const openai_api_key = useUserKey ? payload.api_key : process.env.OPENAI_API_KEY
+  const openai_api_key = (useUserKey ? payload.api_key : process.env.OPENAI_API_KEY) || ""
+
+  function checkString(str :string) {
+    var pattern = /^sk-[A-Za-z0-9]{48}$/;
+    return pattern.test(str);
+  }
+  if(!checkString(openai_api_key)) {
+    console.log(openai_api_key)
+    throw new Error('OpenAI API Key Format Error')
+  }
+
   delete payload.api_key
 
   const res = await fetch("https://api.openai.com/v1/completions", {
