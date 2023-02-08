@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useTranslations } from "next-intl";
+import Github from "./GitHub";
 
 export default function Header() {
   const t = useTranslations('Index')
@@ -22,27 +23,29 @@ export default function Header() {
           {t('title')}
         </h1>
       </Link>
+      <div className="flex gap-2">
       {
         otherLocale && (
-          <Link href={route} locale={otherLocale}
+          <div
             className="relative font-medium text-black-600 before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-indigo-600 before:transition hover:before:scale-x-100">
+          <Link href={route} locale={otherLocale}>
             {t('switchLocale', { locale: otherLocale })}
           </Link>
+          </div>
         )
       }
-      <a
-        href="https://vercel.com/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Image
-          alt="Vercel Icon"
-          src="/vercelLogo.png"
-          className="sm:w-8 sm:h-[27px] w-8 h-[28px]"
-          width={32}
-          height={28}
-        />
-      </a>
+      {" / "}
+        <a
+          className="relative font-medium text-black-600 before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-indigo-600 before:transition hover:before:scale-x-100"
+          href="https://github.com/zhengbangbo/chat-simplifier/wiki/Deploy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p>{t('deployWiki')}</p>
+        </a>
+      </div>
+
+
     </header>
   );
 }

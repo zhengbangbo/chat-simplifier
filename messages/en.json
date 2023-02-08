@@ -2,6 +2,7 @@
   "Index": {
     "title": "Chat Simplifier",
     "switchLocale": "{locale, select,zh {中文} en {English} other {}}",
+    "deployWiki": "Deploy your own website?",
     "description": "Simplify your chat content in seconds",
     "slogan": "Too many group messages? It's too long to look!",
     "step0": "Paste your OpenAI API Key",
