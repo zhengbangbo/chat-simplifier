@@ -147,11 +147,21 @@ const Home: NextPage = () => {
 
             </p>
           </div>
+          <div className="flex gap-2 m-1">
+            <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
+              onClick={() => navigator.clipboard.readText().then((clipText) => setChat(clipText))}>
+                粘贴
+            </span>
+            <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
+              onClick={() => setChat("")}>
+                清空
+            </span>
+          </div>
           <textarea
             value={chat}
             onChange={(e) => setChat(e.target.value)}
             rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
+            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-2"
             placeholder={
               t('placeholder')
             }
