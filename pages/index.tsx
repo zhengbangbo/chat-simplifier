@@ -30,6 +30,12 @@ const Home: NextPage = () => {
 
   const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
 
+  let isSecureContext = false;
+
+  if (typeof window !== "undefined") {
+    isSecureContext = window.isSecureContext
+  }
+
   const generateChat = async (e: any) => {
     e.preventDefault();
     setGeneratedChat("");
@@ -122,7 +128,6 @@ const Home: NextPage = () => {
                 />
             </>)
           }
-
           <div className="flex mt-10 items-center space-x-3">
             <Image
               src="/1-black.png"
@@ -144,14 +149,17 @@ const Home: NextPage = () => {
                   </span>
                 )
               }
-
             </p>
           </div>
           <div className="flex gap-2 m-1">
-            <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
-              onClick={() => navigator.clipboard.readText().then((clipText) => setChat(clipText))}>
-                {t('pasteButton')}
-            </span>
+            {
+                isSecureContext && (
+                <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
+                  onClick={() => navigator.clipboard.readText().then((clipText) => setChat(clipText))}>
+                    {t('pasteButton')}
+                </span>
+              )
+            }
             <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
               onClick={() => setChat("")}>
                 {t('clearButton')}
@@ -203,7 +211,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <Toaster
-          position="top-center"
+          position="bottom-center"
           reverseOrder={false}
           toastOptions={{ duration: 2000 }}
         />
@@ -222,8 +230,14 @@ const Home: NextPage = () => {
                     <div
                       className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
                       onClick={() => {
+                        if (!isSecureContext) {
+                          toast(t('copyError'), {
+                            icon: "❌",
+                          });
+                          return;
+                        }
                         navigator.clipboard.writeText(generatedChat.trim());
-                        toast("Chat copied to clipboard", {
+                        toast(t('copySuccess'), {
                           icon: "✂️",
                         });
                       }}

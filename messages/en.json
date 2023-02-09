@@ -20,6 +20,8 @@
     "outlineForm": "Outline",
     "outlineFormPrompt": "Please summarize the chat content between <|start|> and <|end|>. It is required to be concise and output in the form of an outline containing a list.\n\n<|start|>",
     "pasteButton": "Paste",
-    "clearButton": "Clear"
+    "clearButton": "Clear",
+    "copySuccess": "Chat copied to clipboard",
+    "copyError": "Copy failed, please use HTTPS"
   }
 }
