@@ -18,6 +18,8 @@
     "paragraphForm": "段落",
     "paragraphFormPrompt": "请总结<|start|>与<|end|>之间的聊天内容。要求简明扼要，以一段话的形式输出。\n\n<|start|>",
     "outlineForm": "大纲",
-    "outlineFormPrompt": "请总结<|start|>与<|end|>之间的聊天内容。要求简明扼要，以包含列表的大纲形式输出。\n\n<|start|>"
+    "outlineFormPrompt": "请总结<|start|>与<|end|>之间的聊天内容。要求简明扼要，以包含列表的大纲形式输出。\n\n<|start|>",
+    "pasteButton": "粘贴",
+    "clearButton": "清空"
   }
 }
