@@ -21,6 +21,7 @@
     "pasteButton": "Paste",
     "clearButton": "Clear",
     "copySuccess": "Chat copied to clipboard",
-    "copyError": "Copy failed, please use HTTPS"
+    "copyError": "Copy failed, please use HTTPS",
+    "recommend": "Recommend Other AI Application"
   }
 }

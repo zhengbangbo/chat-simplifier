@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
+import Recommend from "../components/Recommend";
 
 const Home: NextPage = () => {
   const t = useTranslations('Index')
@@ -252,6 +253,7 @@ const Home: NextPage = () => {
             </motion.div>
           </AnimatePresence>
         </ResizablePanel>
+      <Recommend/>
       </main>
       <Footer />
     </div>

@@ -9,6 +9,9 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    recommendContainer: {
+
+    },
     extend: {},
   },
   plugins: [require("@tailwindcss/forms"), require("@headlessui/tailwindcss")],

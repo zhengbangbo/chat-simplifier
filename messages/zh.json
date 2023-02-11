@@ -21,6 +21,7 @@
     "pasteButton": "粘贴",
     "clearButton": "清空",
     "copySuccess": "摘要已复制到剪贴板",
-    "copyError": "复制失败，请使用HTTPS"
+    "copyError": "复制失败，请使用HTTPS",
+    "recommend": "推荐其他 AI 应用"
   }
 }

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .recommend-container {
+    @apply flex px-2 items-center justify-center h-14 hover:bg-slate-200 rounded-lg hover:transition-all border border-slate-100 bg-slate-50;
+  }
+}
