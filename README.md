@@ -1,5 +1,7 @@
 # [Chat Simplifier](https://chat-simplifier.vercel.app/)
-[![](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://chat.imzbb.cc)
+[![discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://chat.imzbb.cc)
+
+[中文版](https://github.com/zhengbangbo/chat-simplifier/blob/main/README_zh.md)
 
 This project simplify chat content for you using AI.
 
@@ -28,9 +30,3 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 ## Credits
 
 Inspired by [TwtterBio](https://github.com/Nutlope/twitterbio) and [Jimmy Lv](https://www.bilibili.com/video/BV17M411i7B6).
-
-## 支持
-
-如果你觉得这个工具对您有帮助，可以帮作者买一杯果汁 🍹 表示支持
-
-![](https://imzbb.cc/img/sponsorship.png)

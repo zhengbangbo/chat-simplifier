@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import ReactMarkdown from 'react-markdown'
+import rehypeHighlight from 'rehype-highlight'
 import { useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
@@ -19,7 +21,7 @@ const Home: NextPage = () => {
   const [chat, setChat] = useState("");
   const [form, setForm] = useState<FormType>("paragraphForm");
   const [api_key, setAPIKey] = useState("")
-  const [generatedChat, setGeneratedChat] = useState<String>("");
+  const [generatedChat, setGeneratedChat] = useState<string>("");
 
   console.log("Streamed response: ", generatedChat);
 
@@ -95,11 +97,10 @@ const Home: NextPage = () => {
         <title>{t('title')}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-6 sm:mt-10">
         <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
-          {t('description')}
+          {t('title')}
         </h1>
         <p className="text-slate-500 mt-5">{t('slogan')}</p>
         <div className="max-w-xl w-full">
@@ -134,7 +135,6 @@ const Home: NextPage = () => {
               width={30}
               height={30}
               alt="1 icon"
-              className="mb-5 sm:mb-0"
             />
             <p className="text-left font-medium">
               {t('step1')}{" "}
@@ -151,9 +151,9 @@ const Home: NextPage = () => {
               }
             </p>
           </div>
-          <div className="flex gap-2 m-1">
+          <div className="flex gap-2 pt-4">
             {
-                isSecureContext && (
+                !isSecureContext && (
                 <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
                   onClick={() => navigator.clipboard.readText().then((clipText) => setChat(clipText))}>
                     {t('pasteButton')}
@@ -168,14 +168,14 @@ const Home: NextPage = () => {
           <textarea
             value={chat}
             onChange={(e) => setChat(e.target.value)}
-            rows={4}
+            rows={6}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-2"
             placeholder={
               t('placeholder')
             }
           />
           <div className="flex mb-5 items-center space-x-3">
-            <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
+            <Image src="/2-black.png" width={30} height={30} alt="2 icon" />
             <p className="text-left font-medium">{t('step2')}</p>
           </div>
           <div className="block">
@@ -242,7 +242,9 @@ const Home: NextPage = () => {
                         });
                       }}
                     >
-                      <p>{generatedChat}</p>
+                      <ReactMarkdown rehypePlugins={[[rehypeHighlight, { detect: true }]]}>
+                        {generatedChat}
+                      </ReactMarkdown>
                     </div>
                   </div>
                 </>

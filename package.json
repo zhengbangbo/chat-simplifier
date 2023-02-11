@@ -14,13 +14,16 @@
     "dotenv": "^16.0.3",
     "eventsource-parser": "^0.0.5",
     "framer-motion": "^8.4.3",
+    "github-markdown-css": "^5.2.0",
     "next": "latest",
     "next-intl": "^2.10.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",
     "react-hot-toast": "^2.4.0",
-    "react-use-measure": "^2.1.1"
+    "react-markdown": "^8.0.5",
+    "react-use-measure": "^2.1.1",
+    "rehype-highlight": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
