@@ -153,7 +153,7 @@ const Home: NextPage = () => {
           </div>
           <div className="flex gap-2 pt-4">
             {
-                !isSecureContext && (
+                isSecureContext && (
                 <span className="bg-black rounded-xl text-white font-medium px-2 py-1 hover:bg-black/80 w-20 cursor-pointer"
                   onClick={() => navigator.clipboard.readText().then((clipText) => setChat(clipText))}>
                     {t('pasteButton')}
