@@ -1,4 +1,5 @@
 # 聊天简化器
+
 [![discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://chat.imzbb.cc)
 
 [English Version](https://github.com/zhengbangbo/chat-simplifier/blob/main/README.md)
@@ -18,6 +19,14 @@
 ```bash
 npm run dev
 ```
+
+## 环境变量说明
+
+| 环境变量 | 说明 | 可选值 |
+|---------|------|------|
+|OPENAI_API_KEY| OpenAI API Key| ([获取](https://beta.openai.com/account/api-keys)) |
+|NEXT_PUBLIC_USE_USER_KEY|是否使用用户自己输入的 API 密钥|`true` or `false` |
+|OPENAI_MODEL|请求 OpenAI 时使用的模型|`text-davinci-003`|
 
 ## 一键部署
 
