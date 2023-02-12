@@ -14,6 +14,11 @@ import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 import Recommend from "../components/Recommend";
+import { fetchWithTimeout } from '../utils/fetchWithTimeout'
+
+const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
+
+const REQUEST_TIMEOUT = 8 * 1000 // 10s timeout
 
 const Home: NextPage = () => {
   const t = useTranslations('Index')
@@ -31,8 +36,6 @@ const Home: NextPage = () => {
       `${t('paragraphFormPrompt')}${chat}<|end|>`
       : `${t('outlineFormPrompt')}${chat}<|end|>`;
 
-  const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
-
   let isSecureContext = false;
 
   if (typeof window !== "undefined") {
@@ -44,52 +47,61 @@ const Home: NextPage = () => {
     setGeneratedChat("");
     setLoading(true);
 
-    const response = useUserKey ?
-      await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt,
-          api_key,
-        }),
-      })
-    :
-      await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt,
-        }),
-      })
+    try {
+      const response = useUserKey ?
+        await fetchWithTimeout("/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: REQUEST_TIMEOUT,
+          body: JSON.stringify({
+            prompt,
+            api_key,
+          }),
+        })
+        :
+        await fetchWithTimeout("/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: REQUEST_TIMEOUT,
+          body: JSON.stringify({
+            prompt,
+          }),
+        })
+      console.log("Edge function returned.");
 
-    console.log("Edge function returned.");
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
+      // This data is a ReadableStream
+      const data = response.body;
+      if (!data) {
+        return;
+      }
+
+      const reader = data.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        const chunkValue = decoder.decode(value).replace("<|im_end|>", "");
+        setGeneratedChat((prev) => prev + chunkValue);
+      }
+
+      setLoading(false);
+    } catch (e: unknown) {
+      console.error('[fetch ERROR]', e)
+      if (e instanceof Error && e?.name === 'AbortError') {
+        setLoading(false)
+        toast.error(t('timeoutError'))
+      }
     }
-
-    // This data is a ReadableStream
-    const data = response.body;
-    if (!data) {
-      return;
-    }
-
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
-
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value).replace("<|im_end|>", "");
-      setGeneratedChat((prev) => prev + chunkValue);
-    }
-
-    setLoading(false);
   };
 
   return (
