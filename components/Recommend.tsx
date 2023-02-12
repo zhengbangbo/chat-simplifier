@@ -51,6 +51,11 @@ export default function Recommend() {
             Email Simplify
           </a>
         </li>
+        <li>
+          <a href="https://readme.rustc.cloud/" target="_blank" className="recommend-container">
+            Github Markdown
+          </a>
+        </li>
       </ul>
     </div>
   )
