@@ -22,6 +22,7 @@
     "clearButton": "清空",
     "copySuccess": "摘要已复制到剪贴板",
     "copyError": "复制失败，请使用HTTPS",
+    "timeoutError": "请求超时，请稍后再试",
     "recommend": "推荐其他 AI 应用"
   }
 }
