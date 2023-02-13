@@ -1,3 +1,4 @@
+import { log } from "console";
 import {
   createParser,
   ParsedEvent,
@@ -25,14 +26,16 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
 
-  const openai_api_key = (useUserKey ? payload.api_key : process.env.OPENAI_API_KEY) || ""
+  const openai_api_key_list = (useUserKey ? payload.api_key : process.env.OPENAI_API_KEY) || ""
 
   function checkString(str :string) {
     var pattern = /^sk-[A-Za-z0-9]{48}$/;
     return pattern.test(str);
   }
+
+  const openai_api_key = openai_api_key_list.split(",").sort(() => Math.random() - 0.5)[0]
+
   if(!checkString(openai_api_key)) {
-    console.log(openai_api_key)
     throw new Error('OpenAI API Key Format Error')
   }
 

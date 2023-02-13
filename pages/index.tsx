@@ -98,6 +98,9 @@ const Home: NextPage = () => {
       if (e instanceof Error && e?.name === 'AbortError') {
         setLoading(false)
         toast.error(t('timeoutError'))
+      } else {
+        setLoading(false)
+        toast.error(t('internalServerError'))
       }
     }
   };

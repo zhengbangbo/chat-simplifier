@@ -2,7 +2,7 @@
 
 [![discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://chat.imzbb.cc)
 
-[中文版](https://github.com/zhengbangbo/chat-simplifier/blob/main/README_zh.md)
+English | [中文](https://github.com/zhengbangbo/chat-simplifier/blob/main/README_zh.md)
 
 This project simplify chat content for you using AI.
 
@@ -26,7 +26,7 @@ npm run dev
 
 | Environment variable | Description | Optional value |
 |---------|------|------|
-|OPENAI_API_KEY| OpenAI API Key| ([Get](https://beta.openai.com/account/api-keys)) |
+|OPENAI_API_KEY| OpenAI API Key，separate with `,` when there are multiple| ([Get](https://beta.openai.com/account/api-keys)) |
 |NEXT_PUBLIC_USE_USER_KEY|Whether to use the API key entered by the user|`true` or `false` |
 |OPENAI_MODEL|The model used when requesting OpenAI|`text-davinci-003`|
 

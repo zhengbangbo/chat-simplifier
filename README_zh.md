@@ -2,7 +2,7 @@
 
 [![discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://chat.imzbb.cc)
 
-[English Version](https://github.com/zhengbangbo/chat-simplifier/blob/main/README.md)
+[English](https://github.com/zhengbangbo/chat-simplifier/blob/main/README.md) | 中文
 
 此项目使用 AI 为您简化聊天内容
 
@@ -24,7 +24,7 @@ npm run dev
 
 | 环境变量 | 说明 | 可选值 |
 |---------|------|------|
-|OPENAI_API_KEY| OpenAI API Key| ([获取](https://beta.openai.com/account/api-keys)) |
+|OPENAI_API_KEY| OpenAI API Key，当有多个时用`,`分隔 | ([获取](https://beta.openai.com/account/api-keys)) |
 |NEXT_PUBLIC_USE_USER_KEY|是否使用用户自己输入的 API 密钥|`true` or `false` |
 |OPENAI_MODEL|请求 OpenAI 时使用的模型|`text-davinci-003`|
 
