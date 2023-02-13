@@ -27,11 +27,11 @@ const handler = async (req: Request): Promise<Response> => {
   const payload: OpenAIStreamPayload = {
     model: process.env.OPENAI_MODEL,
     prompt,
-    temperature: 0.7,
+    temperature: 0.8,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 1536,
+    max_tokens: 2000,
     stream: true,
     n: 1,
     api_key,

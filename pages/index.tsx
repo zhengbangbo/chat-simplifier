@@ -2,8 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import ReactMarkdown from 'react-markdown'
-import rehypeHighlight from 'rehype-highlight'
 import { useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
@@ -18,7 +16,7 @@ import { fetchWithTimeout } from '../utils/fetchWithTimeout'
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
 
-const REQUEST_TIMEOUT = 8 * 1000 // 10s timeout
+const REQUEST_TIMEOUT = 15 * 1000 // 15s timeout
 
 const Home: NextPage = () => {
   const t = useTranslations('Index')
@@ -255,9 +253,7 @@ const Home: NextPage = () => {
                         });
                       }}
                     >
-                      <ReactMarkdown rehypePlugins={[[rehypeHighlight, { detect: true }]]}>
                         {generatedChat}
-                      </ReactMarkdown>
                     </div>
                   </div>
                 </>

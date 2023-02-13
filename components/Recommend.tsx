@@ -22,8 +22,13 @@ export default function Recommend() {
           </a>
         </li>
         <li>
+          <a href="https://weeklyreport.avemaria.fun/" target="_blank" className="recommend-container">
+            Weekly Report
+          </a>
+        </li>
+        <li>
           <a href="https://siteexplainer.vercel.app/" target="_blank" className="recommend-container">
-          SiteExplainer
+            SiteExplainer
           </a>
         </li>
         <li>
@@ -42,18 +47,13 @@ export default function Recommend() {
           </a>
         </li>
         <li>
-          <a href="https://lyrics-explainer.vercel.app/" target="_blank" className="recommend-container">
-            Lyrics Explainer
-          </a>
-        </li>
-        <li>
           <a href="https://email-simplify.vercel.app/" target="_blank" className="recommend-container">
             Email Simplify
           </a>
         </li>
         <li>
           <a href="https://readme.rustc.cloud/" target="_blank" className="recommend-container">
-            Github Markdown
+            Readme Generator
           </a>
         </li>
       </ul>
