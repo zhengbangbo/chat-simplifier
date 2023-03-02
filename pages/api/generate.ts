@@ -20,12 +20,8 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response("No prompt in the request", { status: 400 });
   }
 
-  if (!process.env.OPENAI_MODEL) {
-    throw new Error("Missing env var from OpenAI")
-  }
-
   const payload: OpenAIStreamPayload = {
-    model: process.env.OPENAI_MODEL,
+    model: "text-davinci-003",
     prompt,
     temperature: 0.8,
     top_p: 1,
