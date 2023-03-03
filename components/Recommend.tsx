@@ -56,6 +56,11 @@ export default function Recommend() {
             Readme Generator
           </a>
         </li>
+        <li>
+          <a href="https://b.jimmylv.cn" target="_blank" className="recommend-container">
+            BiliGPT - Video Summarizer
+          </a>
+        </li>
       </ul>
     </div>
   )
