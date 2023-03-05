@@ -1,4 +1,5 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
+import type { ChatGPTMessage } from "../../utils/OpenAIStream";
 
 if (process.env.NEXT_PUBLIC_USE_USER_KEY !== "true") {
   if (!process.env.OPENAI_API_KEY) {
@@ -12,7 +13,7 @@ export const config = {
 
 const handler = async (req: Request): Promise<Response> => {
   const { prompt, api_key } = (await req.json()) as {
-    prompt?: string;
+    prompt?: ChatGPTMessage[];
     api_key?: string
   };
 
@@ -22,7 +23,7 @@ const handler = async (req: Request): Promise<Response> => {
 
   const payload: OpenAIStreamPayload = {
     model: "gpt-3.5-turbo",
-    messages: JSON.parse(prompt),
+    messages: prompt,
     temperature: 0.8,
     top_p: 1,
     frequency_penalty: 0,
