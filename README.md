@@ -28,13 +28,12 @@ npm run dev
 |---------|------|------|
 |OPENAI_API_KEY| OpenAI API Key，separate with `,` when there are multiple| ([Get](https://beta.openai.com/account/api-keys)) |
 |NEXT_PUBLIC_USE_USER_KEY|Whether to use the API key entered by the user|`true` or `false` |
-|OPENAI_MODEL|The model used when requesting OpenAI|`text-davinci-003`|
 
 ## One-Click Deploy
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fzhengbangbo%2Fchat-simplifier&env=OPENAI_API_KEY,NEXT_PUBLIC_USE_USER_KEY,OPENAI_MODEL&envDescription=Click%20%22Learn%20More%22%20on%20the%20right%20to%20view%20the%20description%20of%20the%20environment%20variable&envLink=https%3A%2F%2Fgithub.com%2Fzhengbangbo%2Fchat-simplifier%2Fwiki%2FDeploy&project-name=chat-simplifier&repository-name=chat-simplifier)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/zhengbangbo/chat-simplifier&env=OPENAI_API_KEY,NEXT_PUBLIC_USE_USER_KEY&envDescription=%E7%82%B9%E5%87%BB%E5%8F%B3%E4%BE%A7%E3%80%8CLearn%20More%E3%80%8D%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E&envLink=https://github.com/zhengbangbo/chat-simplifier/wiki/Deploy&project-name=chat-simplifier&repository-name=chat-simplifier)
 
 ## Credits
 

@@ -1,4 +1,5 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
+import type { ChatGPTMessage } from "../../utils/OpenAIStream";
 
 if (process.env.NEXT_PUBLIC_USE_USER_KEY !== "true") {
   if (!process.env.OPENAI_API_KEY) {
@@ -12,7 +13,7 @@ export const config = {
 
 const handler = async (req: Request): Promise<Response> => {
   const { prompt, api_key } = (await req.json()) as {
-    prompt?: string;
+    prompt?: ChatGPTMessage[];
     api_key?: string
   };
 
@@ -20,13 +21,9 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response("No prompt in the request", { status: 400 });
   }
 
-  if (!process.env.OPENAI_MODEL) {
-    throw new Error("Missing env var from OpenAI")
-  }
-
   const payload: OpenAIStreamPayload = {
-    model: process.env.OPENAI_MODEL,
-    prompt,
+    model: "gpt-3.5-turbo",
+    messages: prompt,
     temperature: 0.8,
     top_p: 1,
     frequency_penalty: 0,

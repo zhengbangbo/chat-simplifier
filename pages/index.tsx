@@ -29,10 +29,22 @@ const Home: NextPage = () => {
 
   console.log("Streamed response: ", generatedChat);
 
-  const prompt =
+  const system_prompt =
     form === 'paragraphForm'?
-      `${t('paragraphFormPrompt')}${chat}<|end|>`
-      : `${t('outlineFormPrompt')}${chat}<|end|>`;
+      `${t('paragraphFormPrompt')}`
+      : `${t('outlineFormPrompt')}`;
+
+  const user_prompt = chat;
+  const prompt = [
+    {
+      "role": "system",
+      "content": system_prompt
+    },
+    {
+      "role": "user",
+      "content": user_prompt
+    }
+  ]
 
   let isSecureContext = false;
 
