@@ -10,7 +10,7 @@
 
 ## 它是怎么工作的
 
-该项目使用 [OpenAI GPT-3 API](https://openai.com/api/)（具体来说是 text-davinci-003）和 [Vercel Edge functions](https://vercel.com/features/edge-functions) 流式传输。它根据表单和用户输入构建提示，通过 Vercel Edge 函数发送到 GPT-3 API，然后将响应流回到应用程序。
+该项目使用 [Chat GPT API](https://platform.openai.com/docs/api-reference/chat) (gpt-3.5-turbo)和 [Vercel Edge functions](https://vercel.com/features/edge-functions) 流式传输。它根据表单和用户输入构建提示，通过 Vercel Edge 函数发送到 GPT-3 API，然后将响应流回到应用程序。
 
 ## 本地运行
 
@@ -26,6 +26,7 @@ npm run dev
 |---------|------|------|
 |OPENAI_API_KEY| OpenAI API Key，当有多个时用`,`分隔 | ([获取](https://beta.openai.com/account/api-keys)) |
 |NEXT_PUBLIC_USE_USER_KEY|是否使用用户自己输入的 API 密钥|`true` or `false` |
+|NEXT_PUBLIC_SECRET|项目的秘密字符串。用于生成 API 调用的签名|`null`|
 
 ## 一键部署
 

@@ -10,7 +10,7 @@ This project simplify chat content for you using AI.
 
 ## How it works
 
-This project uses the [OpenAI GPT-3 API](https://openai.com/api/) (specifically, text-davinci-003) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It constructs a prompt based on the form and user input, sends it to the GPT-3 API via a Vercel Edge function, then streams the response back to the application.
+This project uses the [Chat GPT API](https://platform.openai.com/docs/api-reference/chat) (gpt-3.5-turbo) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It constructs a prompt based on the form and user input, sends it to the GPT-3 API via a Vercel Edge function, then streams the response back to the application.
 
 ## Running Locally
 
@@ -28,6 +28,7 @@ npm run dev
 |---------|------|------|
 |OPENAI_API_KEY| OpenAI API Key，separate with `,` when there are multiple| ([Get](https://beta.openai.com/account/api-keys)) |
 |NEXT_PUBLIC_USE_USER_KEY|Whether to use the API key entered by the user|`true` or `false` |
+|NEXT_PUBLIC_SECRET|Secret string for the project. Use for generating signatures for API calls|`null`|
 
 ## One-Click Deploy
 

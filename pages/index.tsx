@@ -13,6 +13,7 @@ import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 import Recommend from "../components/Recommend";
 import { fetchWithTimeout } from '../utils/fetchWithTimeout'
+import { generateSignature } from '../utils/auth'
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
 
@@ -57,6 +58,7 @@ const Home: NextPage = () => {
     setGeneratedChat("");
     setLoading(true);
 
+    const timestamp = Date.now()
     try {
       const response = useUserKey ?
         await fetchWithTimeout("/api/generate", {
@@ -67,6 +69,11 @@ const Home: NextPage = () => {
           timeout: REQUEST_TIMEOUT,
           body: JSON.stringify({
             prompt,
+            time: timestamp,
+            sign: await generateSignature({
+              t: timestamp,
+              m: prompt?.[prompt.length - 1]?.content || "",
+            }),
             api_key,
           }),
         })
@@ -79,6 +86,11 @@ const Home: NextPage = () => {
           timeout: REQUEST_TIMEOUT,
           body: JSON.stringify({
             prompt,
+            time: timestamp,
+            sign: await generateSignature({
+              t: timestamp,
+              m: prompt?.[prompt.length - 1]?.content || "",
+            }),
           }),
         })
       console.log("Edge function returned.");

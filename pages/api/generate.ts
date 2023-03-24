@@ -1,5 +1,6 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 import type { ChatGPTMessage } from "../../utils/OpenAIStream";
+import { verifySignature } from "../../utils/auth";
 
 if (process.env.NEXT_PUBLIC_USE_USER_KEY !== "true") {
   if (!process.env.OPENAI_API_KEY) {
@@ -12,13 +13,21 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt, api_key } = (await req.json()) as {
+  const { prompt, time, sign, api_key } = (await req.json()) as {
     prompt?: ChatGPTMessage[];
+    time: number;
+    sign: string;
     api_key?: string
   };
 
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
+  }
+
+  if (!await verifySignature({
+    t: time, m: prompt?.[prompt.length - 1]?.content || ''
+  }, sign)) {
+    return new Response("Invalid signature", { status: 400 });
   }
 
   const payload: OpenAIStreamPayload = {

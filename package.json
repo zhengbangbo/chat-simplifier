@@ -14,6 +14,7 @@
     "dotenv": "^16.0.3",
     "eventsource-parser": "^0.0.5",
     "framer-motion": "^8.4.3",
+    "js-sha256": "^0.9.0",
     "next": "latest",
     "next-intl": "^2.10.2",
     "react": "18.2.0",
