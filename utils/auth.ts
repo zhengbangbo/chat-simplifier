@@ -18,16 +18,12 @@ async function digestMessage(message: string) {
 export const generateSignature = async(payload: AuthPayload) => {
   const { t: timestamp, m: lastMessage } = payload
   const secretKey = process.env.NEXT_PUBLIC_SECRET as string
-  console.log('secretKey', secretKey)
   const signText = `${timestamp}:${lastMessage}:${secretKey}`
-  console.log('signText', signText)
   // eslint-disable-next-line no-return-await
   return await digestMessage(signText)
 }
 
 export const verifySignature = async(payload: AuthPayload, sign: string) => {
   const payloadSign = await generateSignature(payload)
-  console.log('payloadSign', payloadSign);
-  console.log('sign', sign);
   return payloadSign === sign
 }
