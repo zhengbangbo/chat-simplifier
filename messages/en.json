@@ -24,7 +24,6 @@
     "copyError": "Copy failed, please use HTTPS",
     "timeoutError": "Request timed out, please try again later",
     "internalServerError": "Internal server error, please try again later",
-    "recommend": "Recommend Other AI Application",
-    "wechatMiniProgram": "Wechat Miniprogram Version"
+    "recommend": "Recommend Other AI Application"
   }
 }

@@ -24,7 +24,6 @@
     "copyError": "复制失败，请使用HTTPS",
     "timeoutError": "请求超时，请稍后再试",
     "internalServerError": "服务器内部错误，请稍后再试",
-    "recommend": "推荐其他 AI 应用",
-    "wechatMiniProgram": "微信小程序版"
+    "recommend": "推荐其他 AI 应用"
   }
 }

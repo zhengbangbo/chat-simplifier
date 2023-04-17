@@ -10,14 +10,6 @@ export default function Header() {
   return (
     <header className="flex  flex-row-reverse justify-between items-center w-full mt-5 sm:px-4 px-2">
       <div className="flex gap-2 flex-row text-slate-500">
-        <a
-          className="relative font-medium text-black-600 before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-indigo-600 before:transition hover:before:scale-x-100"
-          href="https://raw.githubusercontent.com/zhengbangbo/oss/main/mp/xiaobo-chat-simplifier.png"
-          target="_blank"
-          rel="noopener noreferrer">
-          <p>{t('wechatMiniProgram')}</p>
-        </a>
-      {" / "}
       {
         otherLocale && (
           <div
