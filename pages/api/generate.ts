@@ -55,8 +55,16 @@ const handler = async (req: Request): Promise<Response> => {
     api_key,
   }
 
-  const stream = await OpenAIStream(payload);
-  return new Response(stream);
+  try {
+    const stream = await OpenAIStream(payload);
+    return new Response(stream);
+  } catch (error: any) {
+    // console.log("debug generate:",error.message);
+    return new Response("OpenAI Error", {
+      status: 501,
+      statusText: error.message,
+    });
+  }
 };
 
 export default handler;

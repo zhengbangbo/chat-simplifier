@@ -47,6 +47,12 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     body: JSON.stringify(payload),
   });
 
+  if (!res.ok) {
+    const text = await res.json();
+    // console.log("debug OpenAIStream:", text.error.message);
+    throw new Error(text.error.message);
+  }
+
   const stream = new ReadableStream({
     async start(controller) {
       // callback

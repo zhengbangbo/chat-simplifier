@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { FormType } from "../components/DropDown";
@@ -273,7 +273,12 @@ const Home: NextPage = () => {
         <Toaster
           position="bottom-center"
           reverseOrder={false}
-          toastOptions={{ duration: 2000 }}
+          toastOptions={{
+            duration: 3000,
+            style: {
+              maxWidth: 500
+            }
+          }}
         />
         <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
         <ResizablePanel>
