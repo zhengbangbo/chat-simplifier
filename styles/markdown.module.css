@@ -1,0 +1,9 @@
+.markdown {
+    text-align: left;
+}
+
+.markdown li {
+    list-style-position: outside;
+    list-style-type: disc;
+    margin: 0 1rem;
+}
