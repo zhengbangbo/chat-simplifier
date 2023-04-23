@@ -1,5 +1,6 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 import type { ChatGPTMessage } from "../../utils/OpenAIStream";
+import { checkOpenAIKey } from "../../utils/utils";
 import { verifySignature } from "../../utils/auth";
 
 export const config = {
@@ -16,7 +17,8 @@ const handler = async (req: Request): Promise<Response> => {
       status: 501,
       statusText: "No environment variable set: NEXT_PUBLIC_USE_USER_KEY"
     });
-  }
+  };
+
   if (process.env.NEXT_PUBLIC_USE_USER_KEY === 'false') {
     if (!process.env.OPENAI_API_KEY) {
       return new Response("OPENAI_API_KEY", {
@@ -25,6 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
       });
     }
   }
+
 
   const { prompt, time, sign, api_key } = (await req.json()) as {
     prompt: ChatGPTMessage[];

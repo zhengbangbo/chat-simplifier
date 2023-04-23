@@ -25,6 +25,8 @@
     "emptyChatError": "Please paste the chat content",
     "timeoutError": "Request timed out, please try again later",
     "internalServerError": "Internal server error, please try again later",
+    "emptyAPIKeyError": "Please paste the OpenAI API key",
+    "invalidAPIKeyError": "The OpenAI API key is invalid",
     "recommend": "Recommend Other AI Application"
   }
 }

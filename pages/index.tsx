@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { FormType } from "../components/DropDown";
@@ -14,6 +14,7 @@ import ResizablePanel from "../components/ResizablePanel";
 import Recommend from "../components/Recommend";
 import { fetchWithTimeout } from '../utils/fetchWithTimeout'
 import { generateSignature } from '../utils/auth'
+import { checkOpenAIKey } from "../utils/utils";
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "false" ? false : true;
 
@@ -59,8 +60,19 @@ const Home: NextPage = () => {
     setGeneratedChat("");
     setLoading(true);
 
-    if(!chat) {
+    if (!chat) {
       toast.error(t('emptyChatError'))
+      setLoading(false)
+      return
+    }
+
+    if (useUserKey) {
+      if (!api_key) {
+        toast.error(t('emptyAPIKeyError'))
+      }
+      if (!checkOpenAIKey(api_key)) {
+        toast.error(t('invalidAPIKeyError'))
+      }
       setLoading(false)
       return
     }
@@ -124,7 +136,7 @@ const Home: NextPage = () => {
       }
 
       setLoading(false);
-    } catch (e: unknown) {
+    } catch (e: any) {
       console.error('[fetch ERROR]', e)
       if (e instanceof Error && e?.name === 'AbortError') {
         setLoading(false)
