@@ -18,7 +18,7 @@ import { checkOpenAIKey } from "../utils/utils";
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "false" ? false : true;
 
-const REQUEST_TIMEOUT = 15 * 1000 // 15s timeout
+const REQUEST_TIMEOUT = 30 * 1000 // 30s timeout
 
 const Home: NextPage = () => {
   const t = useTranslations('Index')
