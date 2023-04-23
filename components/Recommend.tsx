@@ -12,11 +12,6 @@ export default function Recommend() {
           </a>
         </li>
         <li>
-          <a href="https://email-helper.vercel.app/" target="_blank" className="recommend-container">
-            Email Helper
-          </a>
-        </li>
-        <li>
           <a href="https://www.teach-anything.com/" target="_blank" className="recommend-container">
             Teach Anything
           </a>
@@ -39,16 +34,6 @@ export default function Recommend() {
         <li>
           <a href="https://www.meout.app/" target="_blank" className="recommend-container">
             Meout
-          </a>
-        </li>
-        <li>
-          <a href="https://text-summarizer-seven.vercel.app/" target="_blank" className="recommend-container">
-            Text Summarizer
-          </a>
-        </li>
-        <li>
-          <a href="https://email-simplify.vercel.app/" target="_blank" className="recommend-container">
-            Email Simplify
           </a>
         </li>
         <li>
