@@ -24,11 +24,11 @@ npm run dev
 
 ## Environment variable description
 
-| Environment variable | Description | Optional value |
-|---------|------|------|
-|OPENAI_API_KEY| OpenAI API Key，separate with `,` when there are multiple| ([Get](https://beta.openai.com/account/api-keys)) |
-|NEXT_PUBLIC_USE_USER_KEY|Whether to use the API key entered by the user|`true` or `false` |
-|NEXT_PUBLIC_SECRET|Secret string for the project. Use for generating signatures for API calls|`null`|
+| Environment variable | Description | Required | Optional value |
+|---------|------|-----|--|
+|OPENAI_API_KEY| OpenAI API Key，separate with `,` when there are multiple | No | ([Get](https://beta.openai.com/account/api-keys)) |
+|NEXT_PUBLIC_USE_USER_KEY|Whether to use the API key entered by the user| No, default value is `true` |`true` or `false` |
+|NEXT_PUBLIC_SECRET|Secret string for the project. Use for generating signatures for API calls | No |`null`|
 
 ## One-Click Deploy
 

@@ -2,12 +2,6 @@ import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 import type { ChatGPTMessage } from "../../utils/OpenAIStream";
 import { verifySignature } from "../../utils/auth";
 
-if (process.env.NEXT_PUBLIC_USE_USER_KEY !== "true") {
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("Missing env var from OpenAI");
-  }
-}
-
 export const config = {
   runtime: "edge",
   unstable_allowDynamic: [
@@ -16,16 +10,28 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
+
+  if (!process.env.NEXT_PUBLIC_USE_USER_KEY) {
+    return new Response("NEXT_PUBLIC_USE_USER_KEY", {
+      status: 501,
+      statusText: "No environment variable set: NEXT_PUBLIC_USE_USER_KEY"
+    });
+  }
+  if (process.env.NEXT_PUBLIC_USE_USER_KEY === 'false') {
+    if (!process.env.OPENAI_API_KEY) {
+      return new Response("OPENAI_API_KEY", {
+        status: 501,
+        statusText: "No environment variable set: OPENAI_API_KEY"
+      });
+    }
+  }
+
   const { prompt, time, sign, api_key } = (await req.json()) as {
-    prompt?: ChatGPTMessage[];
+    prompt: ChatGPTMessage[];
     time: number;
     sign: string;
-    api_key?: string
+    api_key?: string;
   };
-
-  if (!prompt) {
-    return new Response("No prompt in the request", { status: 400 });
-  }
 
   if (!await verifySignature({
     t: time, m: prompt?.[prompt.length - 1]?.content || ''

@@ -27,11 +27,11 @@ npm run dev
 
 ## 环境变量说明
 
-| 环境变量 | 说明 | 可选值 |
-|---------|------|------|
-|OPENAI_API_KEY| OpenAI API Key，当有多个时用`,`分隔 | ([获取](https://beta.openai.com/account/api-keys)) |
-|NEXT_PUBLIC_USE_USER_KEY|是否使用用户自己输入的 API 密钥|`true` or `false` |
-|NEXT_PUBLIC_SECRET|项目的秘密字符串。用于生成 API 调用的签名|`null`|
+| 环境变量 | 说明 |  是否必须 |可选值 |
+|---------|------|---|----|
+|OPENAI_API_KEY| OpenAI API Key，当有多个时用`,`分隔 | 非必需 |([获取](https://beta.openai.com/account/api-keys)) |
+|NEXT_PUBLIC_USE_USER_KEY|是否使用用户自己输入的 API 密钥| 必须，默认为 true |`true` or `false` |
+|NEXT_PUBLIC_SECRET|项目的秘密字符串。用于生成 API 调用的签名| 非必需 | `123abc` |
 
 ## 一键部署
 

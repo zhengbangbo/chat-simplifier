@@ -15,7 +15,7 @@ import Recommend from "../components/Recommend";
 import { fetchWithTimeout } from '../utils/fetchWithTimeout'
 import { generateSignature } from '../utils/auth'
 
-const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
+const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "false" ? false : true;
 
 const REQUEST_TIMEOUT = 15 * 1000 // 15s timeout
 
@@ -58,6 +58,12 @@ const Home: NextPage = () => {
     e.preventDefault();
     setGeneratedChat("");
     setLoading(true);
+
+    if(!chat) {
+      toast.error(t('emptyChatError'))
+      setLoading(false)
+      return
+    }
 
     const timestamp = Date.now()
     try {
@@ -125,7 +131,7 @@ const Home: NextPage = () => {
         toast.error(t('timeoutError'))
       } else {
         setLoading(false)
-        toast.error(t('internalServerError'))
+        toast.error(e?.message || t('unknownError'))
       }
     }
   };
