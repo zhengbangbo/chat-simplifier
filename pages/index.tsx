@@ -69,13 +69,16 @@ const Home: NextPage = () => {
     if (useUserKey) {
       if (!api_key) {
         toast.error(t('emptyAPIKeyError'))
+        setLoading(false)
+        return
       }
       if (!checkOpenAIKey(api_key)) {
         toast.error(t('invalidAPIKeyError'))
+        setLoading(false)
+        return
       }
-      setLoading(false)
-      return
     }
+    console.log("Sending request to Edge function.");
 
     const timestamp = Date.now()
     try {
