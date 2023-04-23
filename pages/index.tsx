@@ -274,7 +274,7 @@ const Home: NextPage = () => {
           position="bottom-center"
           reverseOrder={false}
           toastOptions={{
-            duration: 3000,
+            duration: 4000,
             style: {
               maxWidth: 500
             }
