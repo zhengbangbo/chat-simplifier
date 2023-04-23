@@ -14,7 +14,7 @@ This project uses the [Chat GPT API](https://platform.openai.com/docs/api-refere
 
 ## Running Locally
 
-After cloning the repo, go to [OpenAI](https://beta.openai.com/account/api-keys) to make an account and put your API key in a file called `.env`.
+After cloning the repository, go to [OpenAI](https://beta.openai.com/account/api-keys) to create an account and refer to the [environment variable instructions](#environment-variable-description) to put your API key into a file named `.env`.
 
 Then, run the application in the command line and it will be available at `http://localhost:3000`.
 

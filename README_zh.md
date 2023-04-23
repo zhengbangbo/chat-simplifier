@@ -10,11 +10,16 @@
 
 ## 它是怎么工作的
 
-该项目使用 [Chat GPT API](https://platform.openai.com/docs/api-reference/chat) (gpt-3.5-turbo)和 [Vercel Edge functions](https://vercel.com/features/edge-functions) 流式传输。它根据表单和用户输入构建提示，通过 Vercel Edge 函数发送到 GPT-3 API，然后将响应流回到应用程序。
+该项目使用 [Chat GPT API](https://platform.openai.com/docs/api-reference/chat) (gpt-3.5-turbo)和 [Vercel Edge functions](https://vercel.com/features/edge-functions) 流式传输。它根据表单和用户输入构建 Prompts，通过 Vercel Edge 函数发送到 GPT-3 API，然后将响应流回到应用程序。
 
 ## 本地运行
 
-克隆存储库后，前往 [OpenAI](https://beta.openai.com/account/api-keys) 创建帐户，并将 API 密钥放入名为 `.env` 的文件中。然后，在命令行中运行应用程序，它将在 `http://localhost:3000` 处可用。
+克隆存储库后，前往 [OpenAI](https://beta.openai.com/account/api-keys) 创建帐户，并参考[环境变量说明](#环境变量说明)将 API 密钥放入名为 `.env` 的文件中。
+
+然后，在命令行中运行应用程序，它将在 `http://localhost:3000` 处可用。
+
+> **Note**
+> 本地运行时，服务端使用本地网络请求 OpenAI，因此需要配置好网络代理。
 
 ```bash
 npm run dev
