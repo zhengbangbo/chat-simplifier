@@ -49,7 +49,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   if (!res.ok) {
     const text = await res.json();
-    // console.log("debug OpenAIStream:", text.error.message);
+    console.log("debug OpenAIStream:", text);
     throw new Error(text.error.message);
   }
 

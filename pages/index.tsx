@@ -118,6 +118,8 @@ const Home: NextPage = () => {
       console.log("Edge function returned.");
 
       if (!response.ok) {
+        console.log("debug response is not ok:", response);
+
         throw new Error(response.statusText);
       }
 
@@ -145,6 +147,7 @@ const Home: NextPage = () => {
         setLoading(false)
         toast.error(t('timeoutError'))
       } else {
+        console.log('debug generageChat error:', e);
         setLoading(false)
         toast.error(e?.message || t('unknownError'))
       }
