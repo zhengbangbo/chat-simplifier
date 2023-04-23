@@ -15,6 +15,8 @@ import Recommend from "../components/Recommend";
 import { fetchWithTimeout } from '../utils/fetchWithTimeout'
 import { generateSignature } from '../utils/auth'
 import { checkOpenAIKey } from "../utils/utils";
+import { marked } from "marked";
+import  styles  from '../styles/markdown.module.css'
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "false" ? false : true;
 
@@ -302,7 +304,12 @@ const Home: NextPage = () => {
                         });
                       }}
                     >
-                      {generatedChat}
+                      <p
+                        className={styles.markdown}
+                        dangerouslySetInnerHTML={{
+                          __html: marked(generatedChat.toString()),
+                        }}
+                      ></p>
                     </div>
                   </div>
                 </>
