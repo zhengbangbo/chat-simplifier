@@ -27,6 +27,7 @@
     "internalServerError": "Internal server error, please try again later",
     "emptyAPIKeyError": "Please paste the OpenAI API key",
     "invalidAPIKeyError": "The OpenAI API key is invalid",
+    "unknownError": "Unknown error, please try again later",
     "recommend": "Recommend Other AI Application"
   }
 }

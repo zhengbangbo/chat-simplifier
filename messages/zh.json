@@ -27,6 +27,7 @@
     "internalServerError": "服务器内部错误，请稍后再试",
     "emptyAPIKeyError": "OpenAI API Key 不能为空",
     "invalidAPIKeyError": "OpenAI API Key 无效",
+    "unknownError": "未知错误，请稍后再试",
     "recommend": "推荐其他 AI 应用"
   }
 }

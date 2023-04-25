@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { FormType } from "../components/DropDown";
@@ -20,7 +20,7 @@ import  styles  from '../styles/markdown.module.css'
 
 const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "false" ? false : true;
 
-const REQUEST_TIMEOUT = 15 * 1000 // 15s timeout
+const REQUEST_TIMEOUT = 30 * 1000 // 30s timeout
 
 const Home: NextPage = () => {
   const t = useTranslations('Index')
@@ -120,6 +120,8 @@ const Home: NextPage = () => {
       console.log("Edge function returned.");
 
       if (!response.ok) {
+        console.log("debug response is not ok:", response);
+
         throw new Error(response.statusText);
       }
 
@@ -147,6 +149,7 @@ const Home: NextPage = () => {
         setLoading(false)
         toast.error(t('timeoutError'))
       } else {
+        console.log('debug generageChat error:', e);
         setLoading(false)
         toast.error(e?.message || t('unknownError'))
       }
@@ -275,7 +278,12 @@ const Home: NextPage = () => {
         <Toaster
           position="bottom-center"
           reverseOrder={false}
-          toastOptions={{ duration: 2000 }}
+          toastOptions={{
+            duration: 4000,
+            style: {
+              maxWidth: 500
+            }
+          }}
         />
         <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
         <ResizablePanel>
